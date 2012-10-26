@@ -50,6 +50,8 @@ You will need...
 ----------|          Changelog           |----------
           \------------------------------/
 
+*10/25/2012 - Now on GitHub!
+
 *3/2/2011 - First release...
 
 
