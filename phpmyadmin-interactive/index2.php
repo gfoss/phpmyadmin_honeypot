@@ -10,6 +10,14 @@
     <link rel="stylesheet" type="text/css" href="phpmyadmin_files/print.css" media="print">
     <meta name="robots" content="noindex,nofollow">
 
+<style>
+#error {
+	background-color:CC3333;
+	border:1;
+	border-color:darkred;
+}
+</style>
+
 </head><body class="loginform">
     
 <div class="container">
@@ -87,17 +95,43 @@
     </noscript>
 </form>
     <br>
+
+<!-- message -->
+<div class="error">
+<p>ERROR: Invalid Login Attempt</p>
+</div>
+
+<?php
+function getRealIpAddr()
+{
+    if (!empty($_SERVER['HTTP_CLIENT_IP']))   //check ip from share internet
+    {
+      $ip=$_SERVER['HTTP_CLIENT_IP'];
+    }
+    elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))   //to check ip is pass from proxy
+    {
+      $ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
+    }
+    else
+    {
+      $ip=$_SERVER['REMOTE_ADDR'];
+    }
+    return $ip;
+}
+$ip = getRealIpAddr();
+$date = date ("d/m/Y:H:i:s");
+$page = $_SERVER['SCRIPT_FILENAME'];
+?>
+
 <!-- Login form -->
-<form method="post" action="login.php" name="phpmyadmin login attempt">
-<input type="hidden" name="env_report" value="REMOTE_HOST,REMOTE_ADDR,HTTP_USER_AGENT,AUTH_TYPE,REMOTE_USER">
-<form method="post" enctype="multipart/form-data" action="login.php" name="phpmyadmin login attempt">
-<input type="hidden" name="required" value="username:please enter your username,password:Please enter your password" />
-<input name="lang" value="en-utf-8" type="hidden">
-<input type="hidden" name="recipients" value="YOUR@EMAIL.COM">
-<input type="hidden" name="subject" value="phpmyadmin login attempt on YOURSITEHERE" />
+<form method="post" action="login.php" name="login form">
+<form method="post" enctype="multipart/form-data" action="login.php" name="login">
     <fieldset>
     <legend>
 Log in<a href="Documentation.html" target="_blank" title="phpMyAdmin documentation"><img class="icon" src="phpmyadmin_files/b_help.png" alt="phpMyAdmin documentation" height="11" width="11"></a></legend>
+
+<input name="date" value="<?= $date ?>" type="hidden">
+<input name="ip" value="<?= $ip ?>" type="hidden">
 
     <table width="%100" border="0" cellpadding="0" cellspacing="0"><tr><td align="left" valign="top">
             <label for="input_username"><b>Username:</b></label></td><td align="right" valign="top">
@@ -107,25 +141,14 @@ Log in<a href="Documentation.html" target="_blank" title="phpMyAdmin documentati
             <input name="password" id="password" value="" size="24" class="textfield" maxlength="50" type="password">
     </td></tr></table>
 	
-	<input name="server" value="1" type="hidden">    </fieldset>
+	<input name="doc" value="phpmyadmin-form" type="hidden">
+	</fieldset>
     <fieldset class="tblFooters">
         <input value="Go" id="input_go" type="submit">
-    <input name="lang" value="en-utf-8" type="hidden"></fieldset>
-    <div style="text-align: right; font-size: 8pt;"><a onclick="alert('Why would you want to do that??')">Reset Password</a></div>
+</fieldset>
+    <div style="text-align: right; font-size: 8pt;"><a onclick="alert('error -- permission denied : 0x42-0839475')">Reset Password</a></div>
 </form>
 
     </div>
 
-<?php
-	$page = $_SERVER['SCRIPT_FILENAME'];
-	$ipaddress = $_SERVER['REMOTE_ADDR']; 
-	$date = date ("M dS H:i:s"); 
-	$message = "$page _ $ipaddress _ $date\n"; 
-	$File = "phpmyadmin_log.txt"; 
-	$Open = fopen($File, "a+"); 
-	if ($Open){ 
-	fwrite($Open, "$message"); 
-	fclose ($Open); 
-	}
-?>
-    </body></html>
+</body></html>
