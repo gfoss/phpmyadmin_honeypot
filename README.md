@@ -1,6 +1,7 @@
 #phpMyAdmin Honeypot
 
 version 1.2 -- 3/3/2014
+
 greg . foss [at] logrhythm . com
 
 Probably one of the smallest and simplest honeypots out there...
@@ -26,6 +27,7 @@ Probably one of the smallest and simplest honeypots out there...
 #[Installation]
 
 Medium-Interaction Version:
+
           1. Upload the /phpmyadmin-interactive/ folder to the root of your web directory and change the folder name to /phpmyadmin/
 
           2. Change the permissions on /phpmyadmin/log.txt to 700 so that the file can be written to by the web user:
@@ -54,6 +56,7 @@ Medium-Interaction Version:
 
 
 Email Version:
+
           1. Upload the /phpmyadmin-email/ folder to the root of your web directory and change the name to /phpmyadmin/
 
           2. chmod the permissions on /phpmyadmin/log.txt to 700 so that the file can be written to by the web user:
