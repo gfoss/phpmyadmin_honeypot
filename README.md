@@ -92,38 +92,59 @@ Note - you can combine both versions of this honeypot...
                /var/www/phpmyadmin/log.txt
 
           Catch-All RegEx:
-               .*?,\s+<sip>,(?<login>.*?),\s+(?<object>.*?),\s+(?<vmid>.*?)$|.*?_\s+<sip>\s+_\s+(?<vmid>.*?)$
+               ^.*?,\s+<sip>,(?<login>.*?),\s+(?<session>.*?),\s+(?<url>.*?)$|^.*?_\s+<sip>\s+_\s+(?<url>.*?)$|^.*?,\s+(?<url>.*?),\s+<sip>,\s+(?<object>.*?)$|^.*?,\s+(?<url>.*?),\s+(?<object>.*?)$|^.*?(?<object>.*?)
 
           Date Parsing:
                <d>/<M>/<yy>:<h>:<m>:<s>
 
           MPE Sub Rules:
+     
+          /-----[key]-----\
+          |Name           |
+          |Object         |
+          |Common Event   |
+          |Classification |
+          |Description    |
+          \---------------/
 
-               /-----[key]-----\
-               |Name           |
-               |Rule           |
-               |Classification |
-               \---------------/
+          Landing Page Hit
+          url=phpmyadmin/index.php
+          Honeypot Access
+          Suspicious
+          This rule will fire whenever the phpmyadmin homepage is hit
 
-               Landing Page Visit
-               vmid=phpmyadmin/index.php
-               Suspicious
+          Logon Failure - Username
+          login!=USERNAME && url=phpmyadmin-form
+          Honeypot Failed Attack
+          Failed Attack
+          This rule will fire whenever a login is attempted using an incorrect username
 
-               Failed Login
-               login!=USERNAME && object!=PASSWORD && vmid=phpmyadmin-form
-               Attack
+          Logon Failure - Password
+          object!=PASSWORD && vmid=phpmyadmin-form
+          Honeypot Failed Attack
+          Failed Attack
+          This rule will fire whenever a login is attempted using an incorrect password
 
-               Successful Login
-               login=USERNAME && object=PASSWORD && vmid=phpmyadmin-form
-               Attack
+          Successful Login
+          login=USERNAME && object=PASSWORD && vmid=phpmyadmin-form
+          Account Compromised
+          Compromise
+          This rule will fire once the attacker has guessed the correct username and password
 
-               System Compromise
-               vmid(regex(COMPROMISED))
-               Compromise
+          System Compromise
+          vmid(regex(COMPROMISED))
+          Host Compromised
+          Compromise
+          This rule will fire once the attacker has gained access to phpmyadmin and is now using the service
 
 --------------------------------------------------
 
 #[Changelog]
+
+          5/21/2014
+               Updated Readme
+               Improved RegEx
+               Improved MPE Parsing Rules
 
           3/3/2014
                Added medium interaction functionality
