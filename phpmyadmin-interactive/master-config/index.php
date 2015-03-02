@@ -358,8 +358,8 @@ function getRealIpAddr()
 $ip = getRealIpAddr();
 $date = date ("d/m/Y:H:i:s");
 $page = "COMPROMISED - Admin Page";
-$message = "$date _ $ip _ $page\n"; 
-$File = "log.txt";
+$message = "$date, $ip, $page\n"; 
+$File = "../log.txt";
 $Open = fopen($File, "a+"); 
 if ($Open){ 
     fwrite($Open, "$message"); 

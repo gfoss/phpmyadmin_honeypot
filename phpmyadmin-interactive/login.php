@@ -18,6 +18,6 @@ fclose($fh);
 if (preg_match("[USERNAME, PASSWORD]", $comma_delimited_list)) {
 	header( 'Location: ./master-config/index.php' ) ;
 } else {
-	header( 'Location: 1ndex.php' ) ;
+	header( 'Location: index2.php' ) ;
 }
 ?>

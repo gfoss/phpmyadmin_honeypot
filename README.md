@@ -1,10 +1,10 @@
 #phpMyAdmin Honeypot
 
-version 1.2 -- 3/3/2014
+version 1.4 -- 3/1/2015
 
-greg . foss [at] logrhythm . com
+greg . foss [at] logrhythm.com
 
-Probably one of the smallest and simplest honeypots out there...
+Probably one of the smallest and simplest web honeypots out there...
 
 --------------------------------------------------
 
@@ -141,6 +141,9 @@ Note - you can combine both versions of this honeypot...
 
 #[Changelog]
 
+          3/1/2015
+               Small fixes...
+
           5/21/2014
                Updated Readme
                Improved RegEx
@@ -159,7 +162,7 @@ Note - you can combine both versions of this honeypot...
 
 #[License]
 
-Copyright (c) 2014, Greg Foss
+Copyright (c) 2015, Greg Foss
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
