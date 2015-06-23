@@ -20,7 +20,7 @@ $ip = getRealIpAddr();
 $date = date ("d/m/Y:H:i:s");
 $page = $_SERVER['SCRIPT_FILENAME'];
 $message = "$date _ $ip _ $page\n"; 
-$File = "log.txt";
+$File = "../log.txt";
 $Open = fopen($File, "a+"); 
 if ($Open){ 
     fwrite($Open, "$message"); 
