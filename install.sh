@@ -46,6 +46,8 @@ sed -i "/\$myFile = \"log.txt\";/c\\\$myFile = \"$phpmyadminLog.txt\";" $directo
 sed -i 's/log.txt/'$phpmyadminLog.txt'/g' $directory/phpmyadmin/master-config/index.php
 sed -i 's/log.txt/'$phpmyadminLog.txt'/g' $directory/phpmyadmin/master-config/phpinfo.php
 mv $directory/phpmyadmin/log.txt $directory/phpmyadmin/$phpmyadminLog.txt
+sed -i 's/USERNAME/'$phpmyadminUsername'/g' $directory/phpmyadmin/login.php
+sed -i 's/PASSWORD/'$phpmyadminPassword'/g' $directory/phpmyadmin/login.php
 if [ -f ../phpmyadmin_honeypot/README.md ]; then
      rm -rf ../phpmyadmin_honeypot/
 fi
