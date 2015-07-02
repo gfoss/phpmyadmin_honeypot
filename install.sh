@@ -43,8 +43,8 @@ fi
 echo "Configure LogRhythm to extract data from $directory/phpmyadmin/$phpmyadminLog.txt"
 sed -i "/\$File = \"log.txt\";/c\\\$File = \"$phpmyadminLog.txt\";" $directory/phpmyadmin/index.php
 sed -i "/\$myFile = \"log.txt\";/c\\\$myFile = \"$phpmyadminLog.txt\";" $directory/phpmyadmin/login.php
-sed -i 's/log.txt/'$phpmyadminLog'/g' $directory/phpmyadmin/master-config/index.php
-sed -i 's/log.txt/'$phpmyadminLog'/g' $directory/phpmyadmin/master-config/phpinfo.php
+sed -i 's/log.txt/'$phpmyadminLog.txt'/g' $directory/phpmyadmin/master-config/index.php
+sed -i 's/log.txt/'$phpmyadminLog.txt'/g' $directory/phpmyadmin/master-config/phpinfo.php
 mv $directory/phpmyadmin/log.txt $directory/phpmyadmin/$phpmyadminLog.txt
 if [ -f ../phpmyadmin_honeypot/README.md ]; then
      rm -rf ../phpmyadmin_honeypot/
