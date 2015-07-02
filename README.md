@@ -1,6 +1,6 @@
 #phpMyAdmin Honeypot
 
-version 1.4 -- 3/1/2015
+version 1.5 -- 7/2/2015
 
 greg . foss [at] logrhythm.com
 
@@ -140,6 +140,9 @@ Note - you can combine both versions of this honeypot...
 --------------------------------------------------
 
 #[Changelog]
+
+          7/2/2015
+               Added install.sh configuration script
 
           3/1/2015
                Small fixes...
