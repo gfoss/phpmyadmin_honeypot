@@ -16,6 +16,19 @@ read directory
 echo ""
 echo "Installing honeypot to: $directory/phpmyadmin/"
 echo ""
+echo -e "What Username would you like to use for PhpMyAdmin? (default: root)"
+read phpmyadminUsername
+if [ -z $phpmyadminUsername ]; then
+    phpmyadminUsername="root"
+fi
+echo -e "What Password would you like to use for PhpMyAdmin? (default: root)"
+read phpmyadminPassword
+if [ -z $phpmyadminPassword ]; then
+    phpmyadminPassword="root"
+fi
+echo ""
+echo "PhpMyAdmin Username and Password Configured ($phpmyadminUsername/$phpmyadminPassword)"
+echo ""
 mv ./phpmyadmin-interactive $directory/phpmyadmin
 echo -e "Rename the honeypot log filename (no extension and make this random): "
 read phpmyadminLog
@@ -40,4 +53,6 @@ echo ""
 echo "Fake PhpMyAdmin has been configured successfully and can be accessed via http://127.0.0.1/phpmyadmin/"
 echo "There are also one fake phpinfo page: $directory/phpmyadmin/phpinfo.php"
 echo "Logs will write to: $directory/phpmyadmin/$phpmyadminLog.txt"
+echo "Username set to => $phpmyadminUsername"
+echo "Password set to => $phpmyadminPassword"
 echo ""
