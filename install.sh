@@ -11,17 +11,17 @@ echo "PhpMyAdmin Honeypot Configuration"
 echo "===================="
 sleep 1
 echo ""
-echo -e "Where would you like to install the Honeypot? ( ex: /var/www )"
+echo "Where would you like to install the Honeypot? ( ex: /var/www )"
 read directory
 echo ""
 echo "Installing honeypot to: $directory/phpmyadmin/"
 echo ""
-echo -e "What Username would you like to use for PhpMyAdmin? (default: root)"
+echo "What Username would you like to use for PhpMyAdmin? (default: root)"
 read phpmyadminUsername
 if [ -z "$phpmyadminUsername" ]; then
     phpmyadminUsername="root"
 fi
-echo -e "What Password would you like to use for PhpMyAdmin? (default: root)"
+echo "What Password would you like to use for PhpMyAdmin? (default: root)"
 read phpmyadminPassword
 if [ -z "$phpmyadminPassword" ]; then
     phpmyadminPassword="root"
@@ -30,7 +30,7 @@ echo ""
 echo "PhpMyAdmin Username and Password Configured ($phpmyadminUsername/$phpmyadminPassword)"
 echo ""
 mv ./phpmyadmin-interactive $directory/phpmyadmin
-echo -e "Rename the honeypot log filename (no extension and make this random): "
+echo "Rename the honeypot log filename (no extension and make this random): "
 read phpmyadminLog
 if [ -z "$phpmyadminLog" ]; then
     phpmyadminLog=$RANDOM
