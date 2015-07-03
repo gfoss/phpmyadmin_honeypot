@@ -18,12 +18,12 @@ echo "Installing honeypot to: $directory/phpmyadmin/"
 echo ""
 echo -e "What Username would you like to use for PhpMyAdmin? (default: root)"
 read phpmyadminUsername
-if [ -z $phpmyadminUsername ]; then
+if [ -z "$phpmyadminUsername" ]; then
     phpmyadminUsername="root"
 fi
 echo -e "What Password would you like to use for PhpMyAdmin? (default: root)"
 read phpmyadminPassword
-if [ -z $phpmyadminPassword ]; then
+if [ -z "$phpmyadminPassword" ]; then
     phpmyadminPassword="root"
 fi
 echo ""
@@ -32,7 +32,7 @@ echo ""
 mv ./phpmyadmin-interactive $directory/phpmyadmin
 echo -e "Rename the honeypot log filename (no extension and make this random): "
 read phpmyadminLog
-if [ -z $phpmyadminLog ]; then
+if [ -z "$phpmyadminLog" ]; then
     phpmyadminLog=$RANDOM
     echo "No value supplied, using a random value: $phpmyadminLog.txt"
     echo ""
